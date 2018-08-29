@@ -1,0 +1,14 @@
+<div class="repl-container">
+  <div class="repl-line" *ngFor="let line of lines">
+    <span class="repl-prefix" *ngIf="line.isInput">&gt;&gt;</span>
+    <span class="repl-prefix" *ngIf="line.isOutput">&lt;&lt;</span>
+
+    <span [ngClass]="{ 'text-danger': line.isError }"> {{ line.text }}</span>
+  </div>
+  <form (ngSubmit)="submit()">
+      <ngx-monaco-editor name='test' (onInit)="onInit($event)" [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
+    <!-- {{code}} -->
+      <!-- <input autofocus autocomplete="off" name="repl-input" placeholder="_" class="form-control repl-input" type="text" [(ngModel)]="code" /> -->
+  </form>
+  <!-- {{context | json}} -->
+</div>

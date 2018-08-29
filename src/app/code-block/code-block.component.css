@@ -1,0 +1,9 @@
+.repl-container {
+    font-family: 'Roboto Mono', monospace;
+}
+
+.repl-input {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
