@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  editorOptions = {theme: 'vs-dark', language: 'javascript'};
-  code: string= 'function x() {\nconsole.log("Hello world!");\n}';
+  editorOptions = {theme: 'tomorrow-night', language: 'javascript'};
+  code: string= 'function x() {\n    console.log("Hello world!");\n}';
 }

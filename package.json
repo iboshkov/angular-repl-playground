@@ -24,6 +24,7 @@
     "context-eval": "^0.1.0",
     "core-js": "^2.5.4",
     "js-vm": "^0.1.4",
+    "ngx-highlightjs": "^2.1.1",
     "ngx-monaco-editor": "^6.0.0",
     "rxjs": "^6.0.0",
     "safe-eval": "^0.4.1",

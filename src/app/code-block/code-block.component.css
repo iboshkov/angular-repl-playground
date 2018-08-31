@@ -1,9 +1,56 @@
 .repl-container {
     font-family: 'Roboto Mono', monospace;
+    height: 164px; 
+    min-height: 164px;
+    background: #1d1f21;
+    overflow: auto;
 }
 
 .repl-input {
     border: none;
     outline: none;
     box-shadow: none;
+    background: #1d1f21;
+    height: 36px;
+    color: #ccc;
+}
+
+.cursor {
+    position: relative;
+}
+
+.cursor i {
+    position: absolute;
+    width: 1px;
+    height: 60%;
+    background-color: #b294bb;
+    left: 3rem;
+    top: 20%;
+    animation-name: blink;
+    animation-duration: 800ms;
+    animation-iteration-count: infinite;
+    opacity: 1;
+}
+
+.cursor span.placeholder {
+    position: absolute;
+    width: 1px;
+    height: 60%;
+    left: 0.5rem;
+    color: #ccc;
+    top: 20%;
+    opacity: 1;
+}
+
+.cursor input:focus + i {
+    display: none;
+}
+
+.cursor input {
+    padding-left: 3rem;
+}
+
+@keyframes blink {
+    from { opacity: 1; }
+    to { opacity: 0; }
 }
