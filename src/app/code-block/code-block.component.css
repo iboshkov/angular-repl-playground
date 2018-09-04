@@ -1,9 +1,14 @@
-.repl-container {
+* {
     font-family: 'Roboto Mono', monospace;
+    color: #CCC;
+}
+
+.repl-container {
     height: 164px; 
     min-height: 164px;
     background: #1d1f21;
     overflow: auto;
+    padding: 5px;
 }
 
 .repl-input {
@@ -13,6 +18,11 @@
     background: #1d1f21;
     height: 36px;
     color: #ccc;
+    border-radius: 0;
+}
+
+.repl-line.intro {
+    font-size: 9pt;
 }
 
 .cursor {
@@ -21,11 +31,11 @@
 
 .cursor i {
     position: absolute;
-    width: 1px;
-    height: 60%;
+    width: 0.5rem;
+    height: 1px;
     background-color: #b294bb;
-    left: 3rem;
-    top: 20%;
+    left: 2.8rem;
+    bottom: 20%;
     animation-name: blink;
     animation-duration: 800ms;
     animation-iteration-count: infinite;

@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  fns:
+    image: docker.codechem.com/ljs-repl:latest
+    build: .
+    ports:
+      - 4110:80

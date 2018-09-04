@@ -8,6 +8,10 @@ import { CodeBlockComponent } from './code-block/code-block.component';
 import { FormsModule }   from '@angular/forms';
 import { MonacoEditorModule, NgxMonacoEditorConfig } from 'ngx-monaco-editor';
 import { HighlightModule } from 'ngx-highlightjs';
+import { CodeEditorComponent } from './code-editor/code-editor.component';
+import { Lesson1Component } from './lessons/lesson1/lesson1.component';
+import { Lesson2Component } from './lessons/lesson2/lesson2.component';
+import { SnippetComponent } from './snippet/snippet.component';
 
 const themeData: monaco.editor.IStandaloneThemeData = {
   "base": "vs-dark",
@@ -193,8 +197,6 @@ const themeData: monaco.editor.IStandaloneThemeData = {
 
 const monacoConfig: NgxMonacoEditorConfig = {
   onMonacoLoad: () => { 
-    const id = "foo.json";
-
     monaco.editor.defineTheme("tomorrow-night", themeData);
     monaco.editor.setTheme("tomorrow-night");
   } 
@@ -205,7 +207,11 @@ const monacoConfig: NgxMonacoEditorConfig = {
   declarations: [
     AppComponent,
     NavComponent,
-    CodeBlockComponent
+    CodeBlockComponent,
+    CodeEditorComponent,
+    Lesson1Component,
+    Lesson2Component,
+    SnippetComponent
   ],
   imports: [
     BrowserModule,
@@ -213,7 +219,7 @@ const monacoConfig: NgxMonacoEditorConfig = {
     NgbModule,
     MonacoEditorModule.forRoot(monacoConfig), // use forRoot() in main app module only.,
     HighlightModule.forRoot({
-      theme: "tomorrow-night",
+      theme: "solarized-dark",
       config: {
         tabReplace: '  '
       }

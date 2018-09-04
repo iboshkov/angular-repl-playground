@@ -1,20 +1,20 @@
-<div #output class="repl-container">
-    <div class="repl-line" [ngClass]="{ 'text-muted': line.isInput }" *ngFor="let line of lines">
-        <span class="repl-prefix" *ngIf="line.isInput">&gt;&gt;</span>
-        <span class="repl-prefix" *ngIf="line.isOutput">&lt;&lt;</span>
-    
-        <pre style="display: inline" [ngClass]="{ 'text-danger': line.isError }"> {{ line.text }}</pre>
-      </div>
+<div (click)="input.focus()" #output class="repl-container">
+    <div class="repl-line text-muted">Welcome to JS REPL v0.1!</div>
+    <div class="repl-line" [ngClass]="{ 'text-muted': line.isInput }" *ngFor="let line of lines; let idx = index">
+        <span class="repl-prefix" *ngIf="line.isInput">&gt;&gt; </span>
+        <pre style="display: inline" [ngClass]="{ 'text-danger': line.isError }">{{ line.text }}</pre>
+    </div>
 </div>
 
-  <!-- <pre><code #output highlight [code]="outputCode"></code></pre> -->
-  <form (ngSubmit)="submit()">
-      <!-- <ngx-monaco-editor name='test' (onInit)="onInit($event)" [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor> -->
+<!-- <pre><code #output highlight [code]="outputCode"></code></pre> -->
+<form (ngSubmit)="submit()">
+    <!-- <ngx-monaco-editor name='test' (onInit)="onInit($event)" [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor> -->
     <!-- {{code}} -->
     <div class="cursor">
-        <input autofocus autocomplete="off" name="repl-input" class="form-control repl-input" type="text" [(ngModel)]="code" />
+        <input #input (keydown)="onKey($event)" autofocus autocomplete="off" name="repl-input" class="form-control repl-input" type="text"
+            [(ngModel)]="code" />
         <i></i>
         <span class="placeholder">&gt;&gt;&gt;</span>
-      </div>
-  </form>
-  <!-- {{context | json}} -->
+    </div>
+</form>
+<!-- {{context | json}} -->

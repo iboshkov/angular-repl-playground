@@ -30,15 +30,19 @@ class Line {
   styleUrls: ['./code-block.component.css']
 })
 export class CodeBlockComponent implements OnInit, AfterViewInit {
-  lines = [];
+  lines: Line[] = [];
   code = '';
+
   context = vm.createContext({
-    clear: () => this.lines = [],
+    clear: () => this.clear(),
     console: {
       log: (...args) => this.lines.push(new Line(`log: ${args.toString()}`))
     }
   });
   editorOptions = { theme: 'tomorrow-night', language: 'javascript' };
+
+  upStack = [];
+  downStack = [];
 
   @ViewChild("output") outputEl: ElementRef;
 
@@ -48,10 +52,23 @@ export class CodeBlockComponent implements OnInit, AfterViewInit {
   }
 
   get outputCode() {
-    return this.lines.reduce((prev, current) => `${prev}\n${this.getText(current)}`, ">>> KI REPL v0.1");
+    return this.lines.reduce((prev, current) => `${prev}\n${this.getText(current)}`, "");
+  }
+
+  get inputs() {
+    return this.lines.filter(x => x.isInput);
+  }
+
+  get inputTexts() {
+    return this.inputs.map(x => x.text);
   }
 
   constructor(private zone: NgZone, private hljs: HighlightJS) { }
+
+
+  clear() { 
+    this.lines = []; 
+  }
 
   ngOnInit() {
     this.hljs.isReady.subscribe(() => {
@@ -70,16 +87,34 @@ export class CodeBlockComponent implements OnInit, AfterViewInit {
     });
   }
 
+  onKey(e: KeyboardEvent) {
+    this.zone.run(() => {
+      let el = null;
+      if (e.which === 38 && this.upStack.length > 0) {
+        el = this.upStack.pop();
+        this.downStack.push(el);
+      }
+      if (e.which === 40 && this.downStack.length > 0) {
+        el = this.downStack.pop();
+        this.upStack.push(el);
+      }
+      if (el !== null) {
+        this.code = el;
+      }
+    })
+  }
+
   execute(code) {
     let msg = "";
     let msgSeverity = LineSeverity.NORMAL;
+    let stack = null;
     try {
       msg = JSON.stringify(vm.runInContext(code, this.context), null, 4);
     } catch (err) {
       msg = JSON.stringify(err, ["message", "arguments", "type", "name"], 4);
       msgSeverity = LineSeverity.ERROR;
     }
-    this.printMsg(msg, LineType.OUTPUT, msgSeverity);
+    this.printMsg(msg || "", LineType.OUTPUT, msgSeverity);
   }
 
   scrollOutput() {
@@ -94,11 +129,22 @@ export class CodeBlockComponent implements OnInit, AfterViewInit {
     msg.split("\n").map(line => this.lines.push(new Line(line, lineType, severity)));
   }
 
-  submit() {
-    this.printMsg(this.code, LineType.INPUT, LineSeverity.NORMAL);
+  submit(input: string = null, clear=false) {
+    if (clear) this.clear();
+
+    const code = input ? input : this.code;
+
+    if (code.trim().length === 0) return;
+
+    this.printMsg(code, LineType.INPUT, LineSeverity.NORMAL);
+
+    if (!input) {
+      this.upStack = this.inputTexts;
+      this.downStack = [];
+    }
 
     try {
-      this.execute(this.code);
+      this.execute(code);
     } catch(err) {}
     this.scrollOutput()
     setTimeout(this.scrollOutput.bind(this), 100);

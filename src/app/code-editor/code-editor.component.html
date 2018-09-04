@@ -1,0 +1,4 @@
+<div class="editor-container" [ngClass]="{ 'initialized': initialized }">
+    <ngx-monaco-editor class="editor" [options]="editorOptions" (onInit)="onInit($event)" [(ngModel)]="code"></ngx-monaco-editor>
+    <div class="lds-ring loader"><div></div><div></div><div></div><div></div></div>
+</div>

@@ -1,0 +1,80 @@
+<div class="row">
+  <div class="col">
+    <h2>Lesson 1: Introduction</h2>
+    <hr/>
+    <h4>What are Functions?</h4>
+    <p>Functions are a convenient way to divide your code into useful blocks, allowing us to order our code, make it more
+      readable, reuse it and save some time. Also functions are a key way to define interfaces so programmers can share their
+      code.
+    </p>
+
+    <hr/>
+
+    <h4>How do you write functions in Javascript?</h4>
+    <p>
+      A JavaScript function is defined with the function keyword, followed by a name, followed by parentheses <code>()</code>.
+    </p>
+
+    <p>
+      Function names can contain letters, digits, underscores, and dollar signs (same rules as variables).
+    </p>
+
+    <p>
+      The parentheses may include parameter names separated by commas:
+      <code>(parameter1, parameter2, ...)</code>
+    </p>
+
+    <p>
+      The code to be executed, by the function, is placed inside curly brackets: <code>{{"{}"}}</code>
+    </p>
+
+    <p>You can type your code in the editor to the left, then press <code>Ctrl+Enter</code> (<code>&#8984;+Enter</code> for
+      Mac) to execute the code, or just use the input below and press Enter to run it.</p>
+
+    <app-snippet [code]="snippet1"></app-snippet>
+    <hr />
+
+    <div class="row">
+        <div class="col">
+          <h4>
+            Function Invocation
+          </h4>
+          <p>
+            The code inside the function will execute when "something" invokes (calls) the function:
+          </p>
+          <ul>
+            <li>When an event occurs (when a user clicks a button)</li>
+            <li>When it is invoked (called) from JavaScript code</li>
+            <li>Automatically (self invoked)</li>
+            <li>You will learn a lot more about function invocation later in this tutorial.</li>
+          </ul>
+  
+          <hr/>
+  
+          <h4>
+            Function Return
+          </h4>
+          <p>When JavaScript reaches a return statement, the function will stop executing.</p>
+          <p>If the function was invoked from a statement, JavaScript will "return" to execute the code after the invoking statement.</p>
+          <p>Functions often compute a return value. The return value is "returned" back to the "caller":</p>
+  
+          <hr/>
+          <app-snippet [code]="snippet2"></app-snippet>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col">
+          <h4>
+              Why Functions?
+          </h4>
+          <p>
+              You can reuse code: Define the code once, and use it many times.
+          </p>
+          <p>You can use the same code many times with different arguments, to produce different results.</p>
+          <hr/>
+          <app-snippet [code]="snippet3"></app-snippet>
+        </div>
+      </div>
+  </div>
+</div>

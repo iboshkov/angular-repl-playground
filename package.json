@@ -23,6 +23,7 @@
     "@ng-bootstrap/ng-bootstrap": "^3.1.0",
     "context-eval": "^0.1.0",
     "core-js": "^2.5.4",
+    "install": "^0.12.1",
     "js-vm": "^0.1.4",
     "ngx-highlightjs": "^2.1.1",
     "ngx-monaco-editor": "^6.0.0",

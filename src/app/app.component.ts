@@ -7,5 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   editorOptions = {theme: 'tomorrow-night', language: 'javascript'};
-  code: string= 'function x() {\n    console.log("Hello world!");\n}';
 }
