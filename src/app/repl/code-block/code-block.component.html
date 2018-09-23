@@ -1,8 +1,8 @@
 <div (click)="input.focus()" #output class="repl-container">
     <div class="repl-line text-muted">Welcome to JS REPL v0.1!</div>
-    <div class="repl-line" [ngClass]="{ 'text-muted': line.isInput }" *ngFor="let line of lines; let idx = index">
-        <span class="repl-prefix" *ngIf="line.isInput">&gt;&gt; </span>
-        <pre style="display: inline" [ngClass]="{ 'text-danger': line.isError }">{{ line.text }}</pre>
+    <div class="repl-line" *ngFor="let line of lines; let idx = index">
+        <span class="repl-prefix" *ngIf="line.isInput && !line.isBlock">&gt;&gt; </span>
+        <pre style="display: inline" [ngClass]="{ 'text-muted': line.isInput, 'text-danger': line.isError }">{{ line.text }}</pre>
     </div>
 </div>
 

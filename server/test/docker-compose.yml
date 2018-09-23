@@ -1,0 +1,42 @@
+version: '3.1'
+
+services:
+  api:
+    image: docker.codechem.com/ednevnik-api:latest
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: always
+    volumes:
+      - ./csvs:/app/csvs
+      # - /etc/localtime:/etc/localtime
+      # - /etc/timezone:/etc/timezone
+    ports:
+      - 3125:3125
+    environment:
+      MONGODB_CONNECTION: "mongodb://mongo:27017/ednevnik"
+    networks:
+      ednevnik:
+        aliases:
+          - api
+  spa:
+    image: docker.codechem.com/ednevnik-spa:latest
+    build:
+      context: ./
+      dockerfile: ./client/Nginx.Dockerfile
+    restart: always
+    ports:
+      - 4100:80
+    networks:
+      ednevnik:
+        aliases:
+          - spa
+  mongo:
+    image: mongo
+    restart: always
+    networks:
+      ednevnik:
+        aliases:
+          - mongo
+networks:
+  ednevnik:

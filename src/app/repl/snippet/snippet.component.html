@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="editor col-lg-6 col-sm-12">
+    <app-code-editor #editor [code]="code" (onSubmit)="repl.submit($event, true)"></app-code-editor>
+    <button style="margin-top: 10px" class="btn btn-outline-success" (click)="repl.submit(editor.code)"> 
+        <i class="fas fa-cogs"></i> Run
+    </button>
+  </div>
+  <div class="col-lg-6 col-sm-12">
+    <app-code-block [additionalContext]="additionalContext" #repl></app-code-block>
+  </div>
+</div>

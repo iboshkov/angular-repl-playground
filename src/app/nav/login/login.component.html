@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Login</h4>
+  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="alert alert-info"><strong>Demo login:</strong> demo/demo</div>
+  <div *ngIf="error" class="alert alert-danger"><strong>Error:</strong> Invalid username or password.</div>
+  <form (submit)="login()">
+    <div class="form-group">
+      <input name="username" [(ngModel)]="username" type="text" class="form-control" placeholder="Username">
+    </div>
+    <div class="form-group">
+      <input name="password" [(ngModel)]="password" type="password" class="form-control" placeholder="Password">
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="login()">Login</button>
+</div>

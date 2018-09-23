@@ -1,0 +1,9 @@
+<div class="card">
+  <div class="d-flex justify-content-between align-items-center exercise-header card-header text-white bg-primary" [class.bg-success]="isDoneByCurrentUser()" >
+    <i class="fa fa-terminal"></i> {{ title || "Unnamed Excercise" }}
+    <span class="badge badge-primary">{{ model.exp }} EXP</span>
+  </div>
+  <div class="card-body">
+    <ng-content></ng-content>
+  </div>
+</div>

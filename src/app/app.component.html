@@ -1,5 +1,21 @@
 <div class="container">
   <app-nav></app-nav>
+
   <hr/>
-  <app-lesson1></app-lesson1>
+
+  <div *ngIf="userSvc.isLoggedIn" class="row">
+    <div class="col">
+      <p>Welcome, <strong>{{userSvc.user.name}}</strong>, you're currently a <strong>level {{userSvc.level(userSvc.user)+1}}</strong> user, you need <strong>{{ userSvc.expToNextLevel() }}</strong> more EXP to progress to <strong>level {{userSvc.level(userSvc.user)+2}}</strong>. See you there!</p>
+      <!--<br/>-->
+      <p><ngb-progressbar type="success" [value]="userSvc.user.exp / userSvc.nextLevel().exp * 100">{{userSvc.user.exp}} / {{userSvc.nextLevel().exp}} EXP</ngb-progressbar></p>
+
+    </div>
+  </div>
+  <hr/>
+
+  <div class="row">
+    <div class="col">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>

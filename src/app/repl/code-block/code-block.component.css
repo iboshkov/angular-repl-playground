@@ -3,6 +3,10 @@
     color: #CCC;
 }
 
+.text-muted {
+    color: #888 !important;
+}
+
 .repl-container {
     height: 164px; 
     min-height: 164px;
@@ -44,7 +48,6 @@
 
 .cursor span.placeholder {
     position: absolute;
-    width: 1px;
     height: 60%;
     left: 0.5rem;
     color: #ccc;

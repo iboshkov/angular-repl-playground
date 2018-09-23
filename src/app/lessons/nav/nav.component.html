@@ -1,0 +1,5 @@
+<ul class="nav flex-column nav-pills">
+  <li class="nav-item" *ngFor="let l of lessons">
+    <a [routerLink]="[l]"  routerLinkActive="active" class="nav-link">Lesson {{l}}</a>
+  </li>
+</ul>
